@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, MainActivity!</string>
+    <string name="app_name">1037-CustomViews</string>
+    
+    <string name="mark_a">Sobresaliente</string>
+    <string name="mark_b">Notable</string>
+    <string name="mark_c">Bien</string>
+    <string name="mark_d">Suficiente</string>
+    <string name="mark_e">Insuficiente</string>
+    <string name="mark_unknown">¿?</string>
+</resources>

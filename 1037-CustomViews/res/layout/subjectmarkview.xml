@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<TextView android:text="TextView" android:layout_height="wrap_content"
+		android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium"
+		android:id="@+id/sm_student" android:layout_alignParentLeft="true" />
+		
+		
+	<TextView android:text="TextView" android:layout_height="wrap_content"
+		android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium"
+		android:id="@+id/sm_subject"
+		android:layout_alignParentLeft="true" 
+		android:layout_below="@id/sm_student"
+		 android:textStyle="bold"/>
+
+
+
+	<TextView android:text="TextView" android:layout_height="wrap_content"
+		android:layout_width="wrap_content" android:id="@+id/sm_marknumber"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_alignParentTop="true" 
+		android:layout_alignParentRight="true"
+		android:layout_toRightOf="@id/sm_student"
+		
+		android:gravity="right" />
+
+
+	<TextView android:text="TextView" android:layout_height="wrap_content"
+		android:layout_width="wrap_content" android:id="@+id/sm_marktext"
+		android:layout_alignParentRight="true" android:layout_below="@+id/sm_marknumber"
+		android:layout_alignLeft="@+id/sm_marknumber" 
+		android:gravity="right"/>
+
+</RelativeLayout>
