@@ -8,18 +8,23 @@
  */
 package org.francho.java.calculadora;
 
-/*
- * Interfaz para nuestra calculadora sencilla
- */
-
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
 /**
+ * 
+ * Interfaz para nuestra calculadora sencilla
  * 
  * @author: $Author: franchux $
  * @version: $Rev: 75 $
@@ -28,10 +33,15 @@ import javax.swing.border.EmptyBorder;
  */
 public class VentanaCalculadora extends JFrame {
 
+	/**
+	 * generado
+	 */
+	private static final long serialVersionUID = 1583724102189855698L;
+
 	/** numero tecleado */
 	JTextField pantalla;
 
-	/** guarda el resultado de la operacion anterior o el número tecleado */
+	/** guarda el resultado de la operacion anterior o el n√∫mero tecleado */
 	double resultado;
 
 	/** para guardar la operacion a realizar */
@@ -40,7 +50,7 @@ public class VentanaCalculadora extends JFrame {
 	/** Los paneles donde colocaremos los botones */
 	JPanel panelNumeros, panelOperaciones;
 
-	/** Indica si estamos iniciando o no una operación */
+	/** Indica si estamos iniciando o no una operaci√≥n */
 	boolean nuevaOperacion = true;
 
 	/**
@@ -94,7 +104,7 @@ public class VentanaCalculadora extends JFrame {
 	}
 
 	/**
-	 * Crea un boton del teclado numérico y enlaza sus eventos con el listener
+	 * Crea un boton del teclado num√©rico y enlaza sus eventos con el listener
 	 * correspondiente
 	 * 
 	 * @param digito
@@ -113,11 +123,10 @@ public class VentanaCalculadora extends JFrame {
 		});
 
 		panelNumeros.add(btn);
-
 	}
 
 	/**
-	 * Crea un botón de operacion y lo enlaza con sus eventos.
+	 * Crea un bot√≥n de operacion y lo enlaza con sus eventos.
 	 * 
 	 * @param operacion
 	 */
@@ -138,7 +147,7 @@ public class VentanaCalculadora extends JFrame {
 	}
 
 	/**
-	 * Gestiona las pulsaciones de teclas numéricas
+	 * Gestiona las pulsaciones de teclas num√©ricas
 	 * 
 	 * @param digito
 	 *            tecla pulsada
@@ -153,7 +162,7 @@ public class VentanaCalculadora extends JFrame {
 	}
 
 	/**
-	 * Gestiona el gestiona las pulsaciones de teclas de operación
+	 * Gestiona el gestiona las pulsaciones de teclas de operaci√≥n
 	 * 
 	 * @param tecla
 	 */
