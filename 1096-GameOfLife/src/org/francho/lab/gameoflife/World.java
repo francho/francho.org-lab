@@ -6,7 +6,7 @@
  * or send a letter to Creative Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
  *
  */
-package es.francho.lab.gameoflife;
+package org.francho.lab.gameoflife;
 
 
 /**
@@ -16,6 +16,8 @@ package es.francho.lab.gameoflife;
 public class World {
 	
 	Cell[][] cells;
+	private int numGenerations;
+
 
 	/**
 	 * 
@@ -24,6 +26,7 @@ public class World {
 	 */
 	public World(int rows, int cols) {
 		cells=new Cell[rows][cols];
+		numGenerations=0;
 		
 		for(int r=0; r<rows; r++) {
 			for(int c=0; c<cols; c++) {
@@ -115,7 +118,8 @@ public class World {
 	 */
 	public void nextGeneration() {
 		prepareNextGeneration();
-		fixNextGeneration();	
+		fixNextGeneration();
+		numGenerations++;
 	}
 
 	/**
@@ -142,5 +146,29 @@ public class World {
 				cell.fixNextGeneration();
 			}
 		}
+	}
+
+	/**
+	 * @return
+	 */
+	public int getNumGenerations() {
+		return numGenerations;
+	}
+
+	/**
+	 * @return
+	 */
+	public int getNumLiveCells() {
+		int liveCells = 0;
+		for(int r=0; r<getNumRows(); r++) {
+			for(int c=0; c<getNumCols(); c++) {
+				final Cell cell = getCell(r, c);
+				if(cell.isAlive()) { 
+					liveCells++;
+				}
+			}
+		}
+		
+		return liveCells;
 	}
 }

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="hello">Hello World, WorldActivity!</string>
-    <string name="app_name">1096-GameOfLife</string>
+	<string name="app_name">1096-GameOfLife</string>
+	<string name="btn_auto_on">auto</string>
+	<string name="btn_auto_off">auto</string>
+	<string name="btn_next">siguiente</string>
+	<string name="btn_clear">nueva</string>
+	<string name="text_generation" formatted="false">Generación %d</string>
+	<string name="text_livecells" formatted="false">Celulas vivas: %d</string>
 
 </resources>

@@ -6,12 +6,13 @@
  * or send a letter to Creative Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
  *
  */
-package es.francho.lab.gameoflife.test;
+package org.francho.lab.gameoflife.test;
+
+import org.francho.lab.gameoflife.Cell;
+import org.francho.lab.gameoflife.World;
+import org.francho.lab.gameoflife.Cell.Health;
 
 import junit.framework.TestCase;
-import es.francho.lab.gameoflife.Cell;
-import es.francho.lab.gameoflife.World;
-import es.francho.lab.gameoflife.Cell.Health;
 
 /**
  * @author francho
@@ -78,7 +79,23 @@ public class TestWorld extends TestCase {
 		assertTrue(world.getCell(2, 3).isAlive());
 		
 	}
+	
+	public void testNumGenerations() {
+		World world = new World(3,4);
+		
+		assertEquals(0, world.getNumGenerations());
+		world.nextGeneration();
+		assertEquals(1, world.getNumGenerations());
+	}
 
+	
+	public void testNumLiveCells() {
+		World world = new World(3,3);
+		initWorldAllLives(world);
+		
+		assertEquals(9, world.getNumLiveCells());
+	}
+	
 	/**
 	 * @param world
 	 */

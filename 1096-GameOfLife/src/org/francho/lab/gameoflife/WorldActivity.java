@@ -1,0 +1,146 @@
+package org.francho.lab.gameoflife;
+
+import org.francho.lab.gameoflife.WorldView.WorldListener;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.util.Log;
+import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
+import android.widget.ToggleButton;
+
+public class WorldActivity extends Activity implements OnCheckedChangeListener, WorldListener {
+
+	private static final int WORLD_COLS = 20;
+	private static final int WORLD_ROWS = 20;
+	
+	private WorldView mWorldView;
+	
+	private CountDownTimer countDownTimer;
+	private ToggleButton mPlayButton;
+	private TextView mTextGeneration;
+	private TextView mTextLivecells;
+	
+
+	/** Called when the activity is first created. */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+        
+        mPlayButton = (ToggleButton) findViewById(R.id.btn_onOff);
+        mPlayButton.setOnCheckedChangeListener(this);
+        
+        mTextGeneration = (TextView) findViewById(R.id.text_generation);
+        mTextLivecells = (TextView) findViewById(R.id.text_livecells);
+        
+        mWorldView = (WorldView) findViewById(R.id.world);
+        mWorldView.setWorldListener(this);
+        
+        initWorld();
+    }
+
+	/**
+	 * 
+	 */
+	private void initWorld() {
+		mWorldView.setWorld(WORLD_ROWS,WORLD_COLS);
+	}
+
+	/* (non-Javadoc)
+	 * @see android.widget.CompoundButton.OnCheckedChangeListener#onCheckedChanged(android.widget.CompoundButton, boolean)
+	 */
+	@Override
+	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+		if(isChecked){
+			startAutoGeneration();
+		} else {
+			stopAutoGeneration();
+		}
+	}
+	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onSaveInstanceState(android.os.Bundle)
+	 */
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		// TODO Auto-generated method stub
+		super.onSaveInstanceState(outState);
+	}
+
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onStart()
+	 */
+	@Override
+	protected void onStart() {
+		super.onStart();
+		if(mPlayButton.isChecked()) {
+			startAutoGeneration();
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onStop()
+	 */
+	@Override
+	protected void onStop() {
+		super.onStop();
+		if(countDownTimer != null) {
+			countDownTimer.cancel();
+			countDownTimer=null;
+		}
+	}
+
+	public void startAutoGeneration() {
+		mWorldView.nextGeneration();
+		countDownTimer = new CountDownTimer(60000,300) {
+			@Override
+			public void onTick(long millisUntilFinished) {
+				mWorldView.nextGeneration();
+				Log.d("s","tick");
+			}
+			
+			@Override
+			public void onFinish() {
+				startAutoGeneration();
+			}
+		};
+		
+		countDownTimer.start();
+	}
+	
+	public void stopAutoGeneration() {
+		if(countDownTimer != null) {
+			countDownTimer.cancel();
+		}
+	}
+	
+	public void onClickButtonNext(View v) {
+		mWorldView.nextGeneration();
+	}
+	
+	public void onClickButtonClear(View v) {
+		initWorld();
+	}
+
+	/* (non-Javadoc)
+	 * @see org.francho.lab.gameoflife.WorldView.WorldListener#onInitWorld()
+	 */
+	@Override
+	public void onInitWorld() {
+		mTextGeneration.setText(getString(R.string.text_generation,0));
+		mTextLivecells.setText(getString(R.string.text_livecells,0));
+	}
+
+	/* (non-Javadoc)
+	 * @see org.francho.lab.gameoflife.WorldView.WorldListener#onNextGeneration(int, int)
+	 */
+	@Override
+	public void onNextGeneration(int day, int liveCells) {
+		mTextGeneration.setText(getString(R.string.text_generation,day));
+		mTextLivecells.setText(getString(R.string.text_livecells,liveCells));
+	}
+}

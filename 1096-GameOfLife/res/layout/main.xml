@@ -1,12 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/scorebar"
+        
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello" />
+        android:orientation="horizontal"
+        android:padding="5dip"
+        android:gravity="center_vertical" 
+        
+        android:layout_alignParentTop="true"
+        >
+        
+        <TextView android:id="@+id/text_generation"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.5"
+            android:text="@string/text_generation"/>
+        <TextView android:id="@+id/text_livecells"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.5"
+            android:gravity="right"
+            android:text="@string/text_livecells"/>
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/buttonbar"
+        
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dip"
+        android:gravity="center_vertical" 
+        
+        android:layout_alignParentBottom="true"
+        >
 
-</LinearLayout>
+        <ToggleButton
+            android:id="@+id/btn_onOff"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.3"
+            
+            android:textOn="@string/btn_auto_on"
+            android:textOff="@string/btn_auto_off"
+            />
+        
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+             android:layout_weight="0.3"
+            android:text="@string/btn_next"
+            
+            android:onClick="onClickButtonNext"
+            />
+        <Button
+            android:id="@+id/btn_clear"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.3"
+            
+            android:text="@string/btn_clear"
+            
+            android:onClick="onClickButtonClear"
+            />
+        
+    </LinearLayout>
+
+    <org.francho.lab.gameoflife.WorldView
+        android:id="@+id/world"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+        
+        android:layout_below="@id/scorebar"
+        android:layout_above="@id/buttonbar"
+        />
+    
+</RelativeLayout>
