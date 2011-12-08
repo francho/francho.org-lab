@@ -13,11 +13,8 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 
 public class WorldView extends SurfaceView implements OnTouchListener {
-	private Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 	private World mWorld;
 	private WorldListener mWorldListener = null;
-	private int mDay = 0;
-	
 	
 	public interface WorldListener {
 		public void onInitWorld();
@@ -51,12 +48,27 @@ public class WorldView extends SurfaceView implements OnTouchListener {
 	 * @param j
 	 */
 	public void setWorld(int rows, int cols) {
-		mWorld = new World(rows, cols);
+		World world = new World(rows, cols);
+		setWorld(world);
+	}
+	
+	/**
+	 * @param world
+	 */
+	public void setWorld(World world) {
+		mWorld = world;
 		invalidate();
 		
 		if(mWorldListener!=null) {
 			mWorldListener.onInitWorld();
 		}
+	}
+	
+	/**
+	 * @return
+	 */
+	public World getWorld() {
+		return mWorld;
 	}
 	
 	/* (non-Javadoc)
@@ -178,4 +190,5 @@ public class WorldView extends SurfaceView implements OnTouchListener {
 		this.mWorldListener  = worldListener;
 	}
 
+	
 }

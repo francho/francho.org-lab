@@ -96,6 +96,19 @@ public class TestWorld extends TestCase {
 		assertEquals(9, world.getNumLiveCells());
 	}
 	
+	public void testEquals() {
+		World world1 = new World(3,3);
+		world1.getCell(1,1).setHealth(Health.ALIVE);
+		
+		World world2 = new World(3,3);
+		world2.getCell(1,1).setHealth(Health.ALIVE);
+		
+		String worldText1=world1.toString();
+		String worldText2=world2.toString();
+		
+		assertEquals(worldText1, worldText2);
+	}
+	
 	/**
 	 * @param world
 	 */

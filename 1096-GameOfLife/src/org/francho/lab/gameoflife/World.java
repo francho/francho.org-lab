@@ -8,12 +8,14 @@
  */
 package org.francho.lab.gameoflife;
 
+import java.io.Serializable;
+
 
 /**
  * @author francho
  *
  */
-public class World {
+public class World implements Serializable {
 	
 	Cell[][] cells;
 	private int numGenerations;
@@ -171,4 +173,32 @@ public class World {
 		
 		return liveCells;
 	}
+	
+
+	/**
+	 * @return
+	 */
+	private Cell[][] getCells() {
+		return cells;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		for(int r=0; r<getNumRows(); r++) {
+			for(int c=0; c<getNumCols(); c++) {
+				final Cell cell = getCell(r, c);
+				String celTxt = cell.isAlive() ? " * " : " - ";
+				builder.append(celTxt);
+			}
+			builder.append('\n');
+		}
+		
+		return builder.toString();
+	}
+
+	
 }

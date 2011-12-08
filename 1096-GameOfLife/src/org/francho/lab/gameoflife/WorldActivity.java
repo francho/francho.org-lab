@@ -1,5 +1,6 @@
 package org.francho.lab.gameoflife;
 
+import org.francho.lab.gameoflife.Cell.Health;
 import org.francho.lab.gameoflife.WorldView.WorldListener;
 
 import android.app.Activity;
@@ -16,6 +17,7 @@ public class WorldActivity extends Activity implements OnCheckedChangeListener, 
 
 	private static final int WORLD_COLS = 20;
 	private static final int WORLD_ROWS = 20;
+	private static final String EXTRA_WORLD = "WorldActivity.EXTRA_WORLD";
 	
 	private WorldView mWorldView;
 	
@@ -40,7 +42,13 @@ public class WorldActivity extends Activity implements OnCheckedChangeListener, 
         mWorldView = (WorldView) findViewById(R.id.world);
         mWorldView.setWorldListener(this);
         
-        initWorld();
+        if(savedInstanceState != null && savedInstanceState.containsKey(EXTRA_WORLD)) {
+        	World world = (World) savedInstanceState.getSerializable(EXTRA_WORLD);
+        	world.getCell(10,10).setHealth(Health.ALIVE);
+        	mWorldView.setWorld(world);
+        } else {
+        	initWorld();
+        }
     }
 
 	/**
@@ -67,7 +75,8 @@ public class WorldActivity extends Activity implements OnCheckedChangeListener, 
 	 */
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
-		// TODO Auto-generated method stub
+		// outState.putSerializable(EXTRA_WORLD, mWorldView.getWorld());
+		
 		super.onSaveInstanceState(outState);
 	}
 
@@ -100,7 +109,6 @@ public class WorldActivity extends Activity implements OnCheckedChangeListener, 
 			@Override
 			public void onTick(long millisUntilFinished) {
 				mWorldView.nextGeneration();
-				Log.d("s","tick");
 			}
 			
 			@Override

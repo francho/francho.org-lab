@@ -8,11 +8,13 @@
  */
 package org.francho.lab.gameoflife;
 
+import java.io.Serializable;
+
 /**
  * @author francho
  *
  */
-public class Cell {
+public class Cell implements Serializable {
 	public enum Health { ALIVE, DEAD }
 	
 	private Health health = Health.DEAD;
