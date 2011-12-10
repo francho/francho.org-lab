@@ -48,7 +48,6 @@ public class WorldActivity extends Activity implements OnCheckedChangeListener, 
         
         if(savedInstanceState != null && savedInstanceState.containsKey(EXTRA_WORLD)) {
         	World world = (World) savedInstanceState.getSerializable(EXTRA_WORLD);
-        	world.getCell(10,10).setHealth(Health.ALIVE);
         	mWorldView.setWorld(world);
         } else {
         	initWorld();
@@ -149,6 +148,7 @@ public class WorldActivity extends Activity implements OnCheckedChangeListener, 
 			
 			@Override
 			public void onFinish() {
+				// Infinite loop (restart)
 				startAutoGeneration();
 			}
 		};
