@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">1096-GameOfLife</string>
+	<string name="app_name">Juego de la vida de Conway</string>
 	<string name="btn_auto_on">auto</string>
 	<string name="btn_auto_off">auto</string>
 	<string name="btn_next">siguiente</string>
