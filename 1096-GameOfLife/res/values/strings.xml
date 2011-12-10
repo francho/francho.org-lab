@@ -7,5 +7,23 @@
 	<string name="btn_clear">nueva</string>
 	<string name="text_generation" formatted="false">Generación %d</string>
 	<string name="text_livecells" formatted="false">Celulas vivas: %d</string>
-
+	<string name="menu_about">Acerca de</string>
+	<string name="about_title">EL JUEGO DE LA VIDA DE CONWAY</string>
+	<string name="about">Este es un ejercicio de programación que Sebastian nos planteo en el <a href="http://francho.org/2011/12/06/en-el-global-day-of-coderetreat-2011-gdcr11-aragon/">Global day of CodeRetreat 2011</a>. 
+\nComo me quedé con las ganas de terminarlo (en los coderetreat se borra el código después de cada sesión) he decidido hacerlo tranquilamente para aplicar todo lo aprendido.
+\n
+\nEl código fuente de esta aplicación puedes encontrarlo en mi repositorio:
+\n
+\n\t<a href="http://francho.org/?p=1096">http://francho.org</a>
+\n
+\nREGLAS DE JUEGO
+\n
+\nEl juego de la vida es en realidad un juego de cero jugadores, lo que quiere decir que su evolución está determinada por el estado inicial y no necesita ninguna entrada de datos posterior. El "tablero de juego" es una malla formada por cuadrados ("células") que se extiende por el infinito en todas las direcciones. Cada célula tiene 8 células vecinas, que son las que están próximas a ella, incluso en las diagonales. Las células tienen dos estados: están "vivas" o "muertas" (o "encendidas" y "apagadas"). El estado de la malla evoluciona a lo largo de unidades de tiempo discretas (se podría decir que por turnos). El estado de todas las células se tiene en cuenta para calcular el estado de las mismas al turno siguiente. Todas las células se actualizan simultáneamente.
+\n
+\nLas transiciones dependen del número de células vecinas vivas:
+\n
+\n- Una célula muerta con exactamente 3 células vecinas vivas "nace" (al turno siguiente estará viva).
+\n
+\n- Una célula viva con 2 ó 3 células vecinas vivas sigue viva, en otro caso muere o permanece muerta (por "soledad" o "superpoblación").
+</string>
 </resources>

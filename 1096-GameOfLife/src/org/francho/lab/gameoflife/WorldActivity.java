@@ -4,9 +4,13 @@ import org.francho.lab.gameoflife.Cell.Health;
 import org.francho.lab.gameoflife.WorldView.WorldListener;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
@@ -50,6 +54,38 @@ public class WorldActivity extends Activity implements OnCheckedChangeListener, 
         	initWorld();
         }
     }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.mainmenu, menu);
+        return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+    	if(item.getItemId() == R.id.menu_about) {
+            showDialogAbout();
+            return true;
+        }
+        
+        return false;
+    }
+
+	/**
+	 * 
+	 */
+	private void showDialogAbout() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle(R.string.about_title)
+			   .setMessage(R.string.about)
+		       .setCancelable(false)
+		       .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+		           public void onClick(DialogInterface dialog, int id) {
+		               dialog.dismiss();
+		           }
+		       }).show();
+	}
 
 	/**
 	 * 

@@ -17,6 +17,8 @@ import android.test.UiThreadTest;
 import android.widget.Button;
 import android.widget.ToggleButton;
 
+import com.jayway.android.robotium.solo.Solo;
+
 /**
  * @author francho
  *
@@ -29,6 +31,7 @@ public class TestWorldActivity extends ActivityInstrumentationTestCase2<WorldAct
 	private ToggleButton mButtonOnOff;
 	private Button mButtonClear;
 	private Button mButtonNext;
+	private Solo mSolo;
 
 	/**
 	 * @param pkg
@@ -52,6 +55,7 @@ public class TestWorldActivity extends ActivityInstrumentationTestCase2<WorldAct
 		mButtonClear = (Button) mActivity.findViewById(org.francho.lab.gameoflife.R.id.btn_clear);
 		mButtonNext = (Button) mActivity.findViewById(org.francho.lab.gameoflife.R.id.btn_next);
 		
+		mSolo = new Solo(getInstrumentation(), getActivity());
 	}
 
 	public void testPreConditions() {		
@@ -80,6 +84,11 @@ public class TestWorldActivity extends ActivityInstrumentationTestCase2<WorldAct
 		assertTrue(true);
 	}
 	
+	public void testAboutDialog() {
+		mSolo.clickOnMenuItem(mSolo.getString(org.francho.lab.gameoflife.R.string.menu_about));
+		String about_title=mSolo.getString(org.francho.lab.gameoflife.R.string.about_title);
+		assertEquals(true, mSolo.searchText(about_title));
+	}
 	
 	// TODO How to test onCreate with saved boundle?
 	

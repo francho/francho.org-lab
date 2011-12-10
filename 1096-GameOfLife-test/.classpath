@@ -5,5 +5,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/1096-GameOfLife"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="lib" path="lib/robotium-solo-3.0.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
